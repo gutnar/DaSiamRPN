@@ -114,7 +114,7 @@ def tracker_eval(net, x_crop, target_pos, target_sz, window, scale_z, p):
     return target_pos, target_sz, score[best_pscore_id]
 
 
-def SiamRPN_init(im, target_pos, target_sz, net, device="cuda"):
+def SiamRPN_init(im, target_pos, target_sz, net, device="cuda:0"):
     state = dict()
     p = TrackerConfig()
     p.update(net.cfg)
@@ -157,7 +157,7 @@ def SiamRPN_init(im, target_pos, target_sz, net, device="cuda"):
     return state
 
 
-def SiamRPN_track(state, im, device="cuda"):
+def SiamRPN_track(state, im, device="cuda:0"):
     p = state['p']
     net = state['net']
     avg_chans = state['avg_chans']
